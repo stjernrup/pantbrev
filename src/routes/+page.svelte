@@ -3,7 +3,9 @@
 	let price: number = $state(0);
 	let loan: number = $state(0);
 	let pantbrev: number = $state(0);
-	let cost = $derived(Math.abs(loan - pantbrev));
+	let pantbrevsCost = $derived(Math.abs(loan - pantbrev) * 0.02);
+	let lagfartsCost = $derived(price * 0.015);
+	let toPayCash = $derived(pantbrevsCost + lagfartsCost + price - loan);
 </script>
 
 <div class="grid grid-cols-8 flex-col gap-16">
@@ -19,6 +21,14 @@
 	</form>
 	<div>
 		<h2>Pantbrevskostnad</h2>
-		<p>{cost} kr</p>
+		<p>{pantbrevsCost.toLocaleString()} kr</p>
+	</div>
+	<div>
+		<h2>Lagfartsavgift</h2>
+		<p>{lagfartsCost.toLocaleString()} kr</p>
+	</div>
+	<div>
+		<h2>Att betala kontant</h2>
+		<p>{toPayCash.toLocaleString()} kr</p>
 	</div>
 </div>
