@@ -11,6 +11,9 @@ dependencies:
   '@vercel/analytics':
     specifier: ^1.4.1
     version: 1.4.1(@sveltejs/kit@2.17.1)(svelte@5.19.9)
+  '@vercel/speed-insights':
+    specifier: ^1.1.0
+    version: 1.1.0(@sveltejs/kit@2.17.1)(svelte@5.19.9)
 
 devDependencies:
   '@eslint/compat':
@@ -963,6 +966,33 @@ packages:
       - rollup
       - supports-color
     dev: true
+
+  /@vercel/speed-insights@1.1.0(@sveltejs/kit@2.17.1)(svelte@5.19.9):
+    resolution: {integrity: sha512-rAXxuhhO4mlRGC9noa5F7HLMtGg8YF1zAN6Pjd1Ny4pII4cerhtwSG4vympbCl+pWkH7nBS9kVXRD4FAn54dlg==}
+    peerDependencies:
+      '@sveltejs/kit': ^1 || ^2
+      next: '>= 13'
+      react: ^18 || ^19 || ^19.0.0-rc
+      svelte: '>= 4'
+      vue: ^3
+      vue-router: ^4
+    peerDependenciesMeta:
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
+        optional: true
+    dependencies:
+      '@sveltejs/kit': 2.17.1(@sveltejs/vite-plugin-svelte@5.0.3)(svelte@5.19.9)(vite@6.1.0)
+      svelte: 5.19.9
+    dev: false
 
   /abbrev@3.0.0:
     resolution: {integrity: sha512-+/kfrslGQ7TNV2ecmQwMJj/B65g5KVq1/L3SGVZ3tCYGqlzFuFCGBZJtMP99wH3NpEUyAjn0zPdPUg0D+DwrOA==}
