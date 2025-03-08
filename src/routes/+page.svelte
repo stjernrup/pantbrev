@@ -25,7 +25,7 @@
 	);
 	let repaymentMonthly = $derived((loan * (repaymentNeedPercent / 100)) / 12);
 	let interestRateCostMonthly = $derived((loan * (interestRate / 100)) / 12);
-	let totalMonthlyCost = $derived(repaymentMonthly + interestRateCostMonthly);
+	let totalMonthlyCost = $derived(repaymentMonthly + interestRateCostMonthly + operatingCost);
 </script>
 
 <div class="col-span-8 flex flex-col gap-1">
@@ -41,7 +41,15 @@
 >
 	<NumberInput name="price" label="Pris" bind:value={price} />
 	<NumberInput name="pantbrev" label="Befintligt pantbrev" bind:value={pantbrev} />
-	<NumberInput name="loan" label="Lånebelopp" bind:value={loan} />
+	<NumberInput name="loan" label="Lånebelopp" bind:value={loan} span={1} />
+	<div class="flex">
+		<button
+			class="rounded-4xl border-2 border-gray-500 p-1 hover:cursor-pointer hover:bg-gray-200"
+			onclick={() => {
+				loan = price * 0.85;
+			}}>85%</button
+		>
+	</div>
 </form>
 <div
 	class="col-span-8 flex flex-wrap gap-4 rounded-md border-1 border-gray-500 p-1 sm:grid-cols-3 md:col-span-4"
@@ -65,7 +73,7 @@
 	class="col-span-8 grid grid-cols-2 gap-2 md:col-span-2"
 >
 	<NumberInput name="interest-rate" label="Ränta (%)" bind:value={interestRate} />
-	<NumberInput name="salary" label="Bruttoinkomst" bind:value={salary} />
+	<NumberInput name="salary" label="Månadsinkomst brutto" bind:value={salary} />
 	<NumberInput name="monthly-cost" label="Driftskostnad" bind:value={operatingCost} />
 </form>
 
@@ -74,7 +82,7 @@
 >
 	<Percent text="Ränta" value={interestRate} />
 	<Cost text="Räntekostnad" value={interestRateCostMonthly} />
-	<Cost text="Bruttoinkomst" value={salary} />
+	<Cost text="Månadsinkomst" value={salary} />
 	<Percent text="Amorteringskrav" value={repaymentNeedPercent} />
 	<Cost text="Amortering" value={repaymentMonthly} />
 	<Cost text="Driftskostnad" value={operatingCost} />
